@@ -19,16 +19,20 @@ exec --no-startup-id xmodmap -e "keysym Menu = Super_R"
 ## screen layout to use if not set in xinit file(works better from xinit)
 exec --no-startup-id ~/.screenlayout/default_dual.sh
 
+exec --no-startup-id xinput "--map-to-output 'Melfas LGDisplay Incell Touch HDMI-0'"
+exec --no-startup-id xset r rate 300 50
 
 #### -------------------------- System tray --------------------------
 #exec --no-startup-id redshift
-# exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift-gtk
 ## pulse audio
 exec --no-startup-id pasystray
 ## network manager
 exec --no-startup-id nm-applet
 ## screenshots
 exec --no-startup-id flameshot
+## bluetooth
+exec --no-startup-id blueman-applet
 
 
 #### -------------------------- Audio --------------------------
@@ -37,6 +41,7 @@ exec --no-startup-id flameshot
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
 ## Alsa controls
 # bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 # bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
@@ -92,6 +97,9 @@ bindsym $mod+v split v
 ## enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# disable focus wrapping
+focus_wrapping no
+
 ## change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
 # bindsym $mod+w layout tabbed
@@ -134,12 +142,14 @@ set $ws1 "1: Main"
 set $ws2 "2: Terminals"
 set $ws3 "3: Misc"
 set $ws4 "4: Misc"
-set $ws5 "5: Misc"
+set $ws5 "5: Float"
 set $ws6 "6: Secondary"
 set $ws7 "7: Terminals"
 set $ws8 "8: Misc"
 set $ws9 "9: Misc"
 set $ws10 "10: Misc"
+
+for_window [workspace="5"] floating enable
 
 ## switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -344,6 +354,3 @@ bar {
         status_command ~/bumblebee-status/bumblebee-status \
         -t iceberg
 }
-
-exec --no-startup-id xinput "--map-to-output 'Melfas LGDisplay Incell Touch HDMI-0'"
-exec --no-startup-id xset r rate 300 50
