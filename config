@@ -65,6 +65,9 @@ bindsym Shift+Print exec --no-startup-id flameshot gui
 bindsym $mod+Ctrl+space exec --no-startup-id dmenu_run -fn "font xft:URWGothic-Book:normal:pixelsize=15"
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn xft:URWGothic-Book:normal:pixelsize=15"
 
+## rofi-launcher
+bindsym $mod+period exec ~/coding/bash/bin/rofi-launcher
+
 ## change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -139,17 +142,17 @@ bindsym $mod+Ctrl+f focus mode_toggle
 ## Define names for default workspaces for which we configure key bindings later on.
 ## We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: Main"
-set $ws2 "2: Terminals"
+set $ws2 "2: Misc"
 set $ws3 "3: Misc"
 set $ws4 "4: Misc"
-set $ws5 "5: Float"
-set $ws6 "6: Secondary"
-set $ws7 "7: Terminals"
-set $ws8 "8: Misc"
+set $ws5 "5: Misc"
+set $ws6 "6: Misc"
+set $ws7 "7: Float"
+set $ws8 "8: Browser"
 set $ws9 "9: Misc"
 set $ws10 "10: Misc"
 
-for_window [workspace="5"] floating enable
+for_window [workspace="7"] floating enable
 
 ## switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -181,8 +184,8 @@ workspace $ws2 output HDMI-0
 workspace $ws3 output HDMI-0
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
-workspace $ws6 output DP-0
-workspace $ws7 output DP-0
+workspace $ws6 output HDMI-0
+workspace $ws7 output HDMI-0
 workspace $ws8 output DP-0
 workspace $ws9 output DP-0
 workspace $ws10 output DP-0
